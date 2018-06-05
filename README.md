@@ -5,6 +5,14 @@
 This project is an auto-generated blog framework, By specifying rss sources, people may have their own blog system built
 automatically and smartly -- articles only take your fancy.
 
+This project is a outcome of my self-learning for scrapy -- a powerful web crawl framework.
+
+## Structure of the project
+This project based on scrapy and hexo. 
+Scrapy is one of the best framework which powered by network spider crawl to get internet contents.
+Hexo is a very good blog system with plenty of themes templated which let user build their own blog rapidly.
+
+
 ## Precondition
 
 - You should have hexo installed. Check site [Hexo](https://hexo.io/) for detail.
