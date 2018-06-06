@@ -29,8 +29,11 @@ spider to crawl all of the contents for use.
 Simply download this repro then run "daily_scheduld_task.py" file under autoblog/tools, then switch to command line within
 the root folder and type
 >hexo clean
+
 >hexo g
+
 >hexo s
+
 then open your browser , type http://127.0.0.1:4000 and that's it.
 
 ## Publish to public
