@@ -55,10 +55,11 @@ class BlogSpider(scrapy.Spider):
 
             replace_regex_str = r'''src=\"(.*?)\"'''
             replace_regex = re.compile(replace_regex_str)
-            replace_url = re.search(replace_regex, md_content_with_img_tags).group(1)
-            replace_content = r'''![](%s)''' % replace_url
-
-            return re.sub(regex, replace_content, md_content_with_img_tags)
+            replace_url = re.findall(replace_regex, md_content_with_img_tags)
+            for img_url in replace_url:
+                replace_content = r'''![](%s)''' % img_url
+                md_content_with_img_tags = re.sub(regex, replace_content, md_content_with_img_tags, 1)
+            return md_content_with_img_tags
         except:
             return md_content_with_img_tags
 
