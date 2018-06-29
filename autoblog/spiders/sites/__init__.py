@@ -1,4 +1,4 @@
-BlueReaderAccount = {'username':'your_username', 'password':'your_password'}
+BlueReaderAccount = {'username':'thinkbig', 'password':'P@ssw0rd'}
 
 # tags: rss resource name
 # list value are the xpath of the target article:
@@ -6,7 +6,7 @@ BlueReaderAccount = {'username':'your_username', 'password':'your_password'}
 # second one is the xpath of the target article content.
 tags_contents_mapping = {
     "卢松松博客": [".//*[@class='post-content']/div[1]/h1", ".//*[@class='post-content']/dd/child::*[not(@id='wenad')]"],
-    "雷锋网": [".// *[ @class ='article-title']/div/h1", ".//*[@class='article-left']/div[1]"],
+    "雷锋网": [".//*[ @class ='article-title']/div/h1", ".//*[@class='wrapper clr']/div[1]/div[1]"],
     "雪球": [".//*[@id='app']/div[2]/article/h1", ".//*[@id='app']//*[@class='article__bd__detail']"],
     "小众软件": [".//*[@id='content']/div[1]/h2", ".//*[@class='entry-content']"],
     "互联网的那点事": [".//*[@class='post article']/h1", ".//*[@class='post article']/div[2]/div[3]"],

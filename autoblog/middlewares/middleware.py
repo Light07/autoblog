@@ -12,10 +12,11 @@ class JavaScriptMiddleware(object):
     def __init__(self):
         self.options = webdriver.ChromeOptions()
         self.options.add_argument('--headless')
+        self.options.add_argument('--disable-gpu')
         self.driver = webdriver.Chrome(chrome_options=self.options)
 
     def process_request(self, request, spider):
-        if "zhihu.com" or "xueqiu.com" in request.url:
+        if "zhihu.com" or "xueqiu.com" or "leiphone.com" in request.url:
             logger.info("chrome headless is starting...")
             self.driver.get(request.url)
             time.sleep(1)

@@ -27,18 +27,18 @@ class BlogSpider(scrapy.Spider):
         item = AutoblogItem()
         tags_mapping = tags_contents_mapping
         for category_posts in all_posts:
-            if response.url in category_posts.keys():
-                try:
-                    item['title'] = category_posts[response.url]['title']
-                    item['date'] = category_posts[response.url]['date']
-                    item['categories'] = category_posts[response.url]['categories']
-                    item['tags'] = category_posts[response.url]['tags']
-                    item['desc'] = category_posts[response.url]['desc']
-                    item['url'] = response.url.replace(response.url.split("//")[0], 'http:', 1)
-                    yield self.exact_contents(response, item, tags_mapping)
-
-                except:
-                    logger.exception('parse error', exc_info=True)
+            for key in category_posts.keys():
+                if response.url in category_posts.keys() or reduce(lambda x,y:x+'/'+y, response.url.split("/")[:-1]) in str(category_posts.keys()):
+                    try:
+                        item['title'] = category_posts[key]['title']
+                        item['date'] = category_posts[key]['date']
+                        item['categories'] = category_posts[key]['categories']
+                        item['tags'] = category_posts[key]['tags']
+                        item['desc'] = category_posts[key]['desc']
+                        item['url'] = response.url.replace(response.url.split("//")[0], 'http:', 1)
+                        yield self.exact_contents(response, item, tags_mapping)
+                    except:
+                        logger.exception('parse error', exc_info=True)
 
     def check_ip(self, response):
         pub_ip = response.xpath('''.//body''').extract()

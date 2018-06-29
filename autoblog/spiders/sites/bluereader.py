@@ -46,7 +46,6 @@ class BlueReader(SharedAPI):
                     post_info[item['link']] = article
         except:
             traceback.print_exc()
-            logger.error('get token failed', exc_info=True)
         return post_info
 
     def get_all_posts(self):
