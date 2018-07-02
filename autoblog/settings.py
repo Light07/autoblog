@@ -67,7 +67,7 @@ DOWNLOADER_MIDDLEWARES = {
 #
 # ]
 
-ROTATING_PROXY_LIST_PATH = r'D:\autoblog\my_ip_pool.txt'
+ROTATING_PROXY_LIST_PATH = r'D:\_Automation\autoblog\my_ip_pool.txt'
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html

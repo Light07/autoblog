@@ -2,6 +2,8 @@
 import traceback
 
 import re
+from functools import reduce
+
 import scrapy
 import tomd
 
@@ -27,14 +29,14 @@ class BlogSpider(scrapy.Spider):
         item = AutoblogItem()
         tags_mapping = tags_contents_mapping
         for category_posts in all_posts:
-            for key in category_posts.keys():
-                if response.url in category_posts.keys() or reduce(lambda x,y:x+'/'+y, response.url.split("/")[:-1]) in str(category_posts.keys()):
+            for k, v in category_posts.items():
+                if response.url.split("//")[1] in k or reduce(lambda x,y:x+'/'+y, response.url.split("/")[:-1]) in str(k):
                     try:
-                        item['title'] = category_posts[key]['title']
-                        item['date'] = category_posts[key]['date']
-                        item['categories'] = category_posts[key]['categories']
-                        item['tags'] = category_posts[key]['tags']
-                        item['desc'] = category_posts[key]['desc']
+                        item['title'] = category_posts[k]['title']
+                        item['date'] = category_posts[k]['date']
+                        item['categories'] = category_posts[k]['categories']
+                        item['tags'] = category_posts[k]['tags']
+                        item['desc'] = category_posts[k]['desc']
                         item['url'] = response.url.replace(response.url.split("//")[0], 'http:', 1)
                         yield self.exact_contents(response, item, tags_mapping)
                     except:
