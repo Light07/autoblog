@@ -58,4 +58,3 @@ class BlueReader(SharedAPI):
 
 blue_reader = BlueReader(BlueReaderAccount["username"], BlueReaderAccount["password"])
 all_posts = blue_reader.get_all_posts()
-
